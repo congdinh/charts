@@ -8,7 +8,9 @@ import { BarChartOption } from './defaultChartValue';
 export default class BarChart extends Component {
 	render() {
 		const {
-			config,
+			config, //default value of chart
+			themes = null, //object themes chart
+			modules = [], //array objects modules extend for chart
 			title = null,
 			subtitle = null,
 			categories = [],
@@ -26,7 +28,7 @@ export default class BarChart extends Component {
 		} = this.props;
 		const options = BarChartOption(config, title, subtitle, categories, events, labelName, dataLabels, tooltip, legend, stacking, xAxis, yAxis, series);
 
-		return React.createElement(ChartBasic, {container:container, type:type, options:options});	
+		return React.createElement(ChartBasic, {container:container, type:type, options:options, modules: modules, themes: themes});	
 	}
 }
 

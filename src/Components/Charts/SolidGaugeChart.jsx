@@ -12,7 +12,9 @@ HighchartsMore(Highcharts);
 export default class SolidGaugeChart extends Component {
 	render() {
 		const {
-			config,
+			config, //default value of chart
+			themes = null, //object themes chart
+			modules = [], //array objects modules extend for chart
 			title = null,
 			subtitle = null,
 			total = 0,
@@ -29,7 +31,8 @@ export default class SolidGaugeChart extends Component {
 			yAxis: yAxis,
 			series: series
 		});
+		modules.push(SolidGauge); //library for chart solidgauge
 
-		return React.createElement(ChartBasic, {container:container, type:type, options:options, modules: [SolidGauge]});	
+		return React.createElement(ChartBasic, {container:container, type:type, options:options, modules: modules, themes: themes});	
 	}
 }

@@ -6,6 +6,13 @@ import "./App.css";
 import { PieChart, ColumnChart, LineChart, SplineChart, BarChart, AreaChart, AreaSplineChart, SolidGaugeChart, WordCloudChart } from "./Components/Charts/index";
 import { sentiments, channels, config } from "./Components/Charts/defaultValue";
 
+/* Library Themes, Extend modules for highcharts */
+import Exporting from 'highcharts/modules/exporting';
+import DarkUnica from 'highcharts/themes/dark-unica';
+import DarkBlue from 'highcharts/themes/dark-blue';
+import DarkGreen from 'highcharts/themes/dark-green';
+
+
 /**
  * App component
  * */
@@ -117,6 +124,8 @@ export default class App extends Component {
 App.defaultProps = {
   sentimentsPieChart: {
     config: config,
+    themes: DarkUnica,
+    modules: [Exporting],
     title: "Total <br/> Sentiment<br>",
     subtitle: 3001,
     container: "sentiments-piechart",
@@ -145,6 +154,8 @@ App.defaultProps = {
   },
   brandAttributesPieChart: {
     config: config,
+    themes: DarkUnica,
+    modules: [Exporting],
     container: "brand-attributes-piechart",
     labelName: "Buzzes",
     series: [{
@@ -169,6 +180,8 @@ App.defaultProps = {
   },
   buzzDistributionPieChart: {
     config: config,
+    themes: DarkUnica,
+    modules: [Exporting],
     title: "Buzz<br/>Distribution<br>",
     subtitle: 3001,
     container: "buzz-distribution-piechart",
@@ -234,6 +247,8 @@ App.defaultProps = {
   },
   sentimentByChannelColumnChart: {
     config: config,
+    themes: DarkUnica,
+    modules: [Exporting],
     container: "sentiment-by-channel-column-chart",
     title: "Sentiment By Channel",
     subtitle: "column",
@@ -282,6 +297,8 @@ App.defaultProps = {
   },
   percentSentimentByChannelColumnChart: {
     config: config,
+    themes: DarkUnica,
+    modules: [Exporting],
     container: "percent-sentiment-by-channel-column-chart",
     title: "Percent Sentiment By Channel",
     subtitle: "column",
@@ -330,6 +347,8 @@ App.defaultProps = {
   },
   negativeBuzzColumnChart: {
     config: config,
+    themes: DarkUnica,
+    modules: [Exporting],
     container: "negative-buzz-column-chart",
     title: "Negative Buzz",
     subtitle: "column",
@@ -356,6 +375,8 @@ App.defaultProps = {
   },
   buzzDistributionChannelColumnChart: {
     config: config,
+    themes: DarkUnica,
+    modules: [Exporting],
     container: "buzz-distribution-channel-chart",
     title: "Buzz Distribution Channel",
     subtitle: "column",
@@ -411,6 +432,8 @@ App.defaultProps = {
   },
   positiveVsNegativeColumnChart: {
     config: config,
+    themes: DarkUnica,
+    modules: [Exporting],
     container: "positive-vs-negative-column-chart",
     title: "Positive Vs Negative",
     subtitle: "column",
@@ -451,6 +474,8 @@ App.defaultProps = {
       lineWidth: 1,
       borderRadius: 0,
     },
+    themes: DarkUnica,
+    modules: [Exporting],
     container: "buzz-volumn-comparison-column-chart",
     title: "Buzz Volumn Comparison",
     subtitle: "column",
@@ -501,6 +526,8 @@ App.defaultProps = {
   },
   sentimentTrendlineLineChart: {
     config: config,
+    themes: DarkUnica,
+    modules: [Exporting],
     title: "Sentiment Trendline",
     subtitle: "line",
     container: "sentiment-trendline-linechart",
@@ -542,6 +569,8 @@ App.defaultProps = {
   },
   buzzTrendlineSplineChart: {
     config: config,
+    themes: DarkUnica,
+    modules: [Exporting],
     title: "Buzz Trendline",
     subtitle: "spline",
     container: "buzz-trendline-splinechart",
@@ -577,6 +606,8 @@ App.defaultProps = {
   },
   sentimentTrendlineSplineChart: {
     config: config,
+    themes: DarkUnica,
+    modules: [Exporting],
     title: "Sentiment Trendline",
     subtitle: "spline",
     container: "sentiment-trendline-splinechart",
@@ -618,6 +649,8 @@ App.defaultProps = {
   },
   sentimentMinMaxSplineChart: {
     config: config,
+    themes: DarkUnica,
+    modules: [Exporting],
     title: "Sentiment Min Max",
     subtitle: "spline",
     container: "sentiment-minmax-splinechart",
@@ -653,6 +686,8 @@ App.defaultProps = {
   },
   sentimentByBrandAttributeBarChart: {
     config: config,
+    themes: DarkUnica,
+    modules: [Exporting],
     container: "sentiment-by-brand-attribute-bar-chart",
     title: "Sentiment By Brand Attribute",
     subtitle: "bar",
@@ -725,6 +760,8 @@ App.defaultProps = {
   },
   channelByBrandAttributeBarChart: {
     config: config,
+    themes: DarkBlue,
+    modules: [Exporting],
     container: "channel-by-brand-attribute-bar-chart",
     title: "Channel By Brand Attribute",
     subtitle: "bar",
@@ -834,6 +871,8 @@ App.defaultProps = {
   },
   buzzTrendlineMinMaxAreaChart: {
     config: config,
+    themes: DarkGreen,
+    modules: [Exporting],
     container: "buzz-trendline-minmax-area-chart",
     title: "Buzz Trendline MinMax",
     subtitle: "area",
@@ -884,6 +923,8 @@ App.defaultProps = {
   },
   buzzTrendlineAreaSplineChart: {
     config: config,
+    themes: DarkUnica,
+    modules: [Exporting],
     container: "buzz-trendline-area-spline-chart",
     title: "Buzz Trendline",
     subtitle: "areaspline",
@@ -934,6 +975,8 @@ App.defaultProps = {
   },
   sourceOfConversationsSolidGaugeChart: {
     config: config,
+    modules: [Exporting],
+    themes: DarkUnica,
     container: "source-of-conversations-solid-gauge-chart",
     title: "Source Of Conversations",
     subtitle: "solidgauge",
@@ -969,7 +1012,10 @@ App.defaultProps = {
   },
   wordCloudChart: {
     config: config,
+    themes: 'dark', //only theme dark echart
     container: 'wordcloud-chart',
+    width: '100%',
+    height: '300px',
     title: {
       text: 'WordCloud Chart',
       link: 'http://www.google.com/trends/hottrends',
@@ -978,7 +1024,7 @@ App.defaultProps = {
        show: true
     },
     toolbox: {
-      show: true,
+      show: false,
       feature: {
         dataView: {
           show: true,

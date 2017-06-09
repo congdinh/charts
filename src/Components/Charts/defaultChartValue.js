@@ -91,6 +91,7 @@ const ColumnChartOption = (config, title, subtitle, categories, events, labelNam
         decimalPoint: '.',
         thousandsSep: ','
       },
+      zoomType: config ? config.zoomType : null,
       type: 'column'
     },
     credits: {
@@ -175,6 +176,7 @@ const LineChartOption = (config, title, subtitle, categories, events, labelName,
         decimalPoint: '.',
         thousandsSep: ','
       },
+      zoomType: config ? config.zoomType : null,
       type: 'line'
     },
     credits: {
@@ -245,6 +247,7 @@ const SplineChartOption = (config, title, subtitle, categories, events, labelNam
         decimalPoint: '.',
         thousandsSep: ','
       },
+      zoomType: config ? config.zoomType : null,
       type: 'spline'
     },
     credits: {
@@ -315,6 +318,7 @@ const BarChartOption = (config, title, subtitle, categories, events, labelName, 
         decimalPoint: '.',
         thousandsSep: ','
       },
+      zoomType: config ? config.zoomType : null,
       type: 'bar'
     },
     credits: {
@@ -401,6 +405,7 @@ const AreaChartOption = (config, title, subtitle, categories, events, labelName,
         decimalPoint: '.',
         thousandsSep: ','
       },
+      zoomType: config ? config.zoomType : null,
       type: 'area'
     },
     credits: {
@@ -493,6 +498,7 @@ const AreaSplineChartOption = (config, title, subtitle, categories, events, labe
         decimalPoint: '.',
         thousandsSep: ','
       },
+      zoomType: config ? config.zoomType : null,
       type: 'areaspline'
     },
     credits: {

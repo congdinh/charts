@@ -18,11 +18,6 @@
   font-size: large;
 }
 
-#wordcloud-chart{
-  width: 100%;
-  height: 400px;
-}
-
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Echarts from 'echarts';
+import 'echarts/theme/dark';
 
 /**
  * Component Echart
@@ -10,7 +11,8 @@ import Echarts from 'echarts';
  *
  **/
 export default class ChartEcharts extends Component {
-  componentDidMount() {
+
+  _initChart(props) {
     // Extend ChartEcharts with modules
     // if (this.props.modules) {
     //   this.props.modules.forEach((module) => {
@@ -22,9 +24,21 @@ export default class ChartEcharts extends Component {
     //   this.props.container,
     //   this.props.options
     // );
+
+    document.getElementById(props.container).style.width = props.width;
+    document.getElementById(props.container).style.height = props.height;
+
     require('echarts-wordcloud');
-    this.chart = Echarts.init(document.getElementById(this.props.container));
-    this.chart.setOption(this.props.options);
+    this.chart = Echarts.init(document.getElementById(props.container), props.themes);
+    this.chart.setOption(props.options);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this._initChart(nextProps);
+  }
+
+  componentDidMount() {
+    this._initChart(this.props);
   }
 
   //Destroy chart before unmount.

@@ -45,7 +45,9 @@ export default class AreaSplineChart extends Component {
 
 	render() {
 		const {
-			config,
+			config, //default value of chart
+			themes = null, //object themes chart
+			modules = [], //array objects modules extend for chart
 			title = null,
 			subtitle = null,
 			categories = [],
@@ -70,7 +72,7 @@ export default class AreaSplineChart extends Component {
 		}
 		const options = AreaSplineChartOption(config, title, subtitle, categories, events, labelName, dataLabels, marker, tooltip, legend, stacking, xAxis, yAxis, series);
 
-		return React.createElement(ChartBasic, {container:container, type:type, options:options});	
+		return React.createElement(ChartBasic, {container:container, type:type, options:options, modules: modules, themes: themes});	
 	}
 }
 

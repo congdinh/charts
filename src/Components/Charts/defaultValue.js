@@ -80,9 +80,11 @@ const config = {
   lineWidth: 1,
   borderRadius: 6,
   maxPointWidth: 40,
+  zoomType: 'x'
 }
+
 export {
 	sentiments,
   channels,
-	config
+	config,
 }

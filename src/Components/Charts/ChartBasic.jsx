@@ -16,10 +16,14 @@ import Highcharts from 'highcharts/highstock';
 export default class ChartBasic extends Component {
   componentDidMount() {
     // Extend Highcharts with modules
-    if (this.props.modules) {
+    if (this.props.modules && this.props.modules.length > 0) {
       this.props.modules.forEach((module) => {
         module(Highcharts);
       });
+    }
+    // Extend Highcharts with themes
+    if (this.props.themes) {
+      this.props.themes(Highcharts);
     }
     // Set container which the chart should render to.
     this.chart = new Highcharts[this.props.type || "Chart"](
