@@ -1,16 +1,13 @@
 const sentiments = {
-	positive: {
-    key: '1',
+	1: {
     value: 'Positive',
     color: '#a4c939'
   },
-  negative: {
-    key: '2',
+  2: {
     value: 'Negative',
     color: '#ff0000'
   },
-  neutral: {
-    key: '3',
+  3: {
     value: 'Neutral',
     color: '#a7a7a7'
   }

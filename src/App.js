@@ -3,7 +3,7 @@ import React, {
 } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import { PieChart, ColumnChart, LineChart, SplineChart, BarChart, AreaChart, AreaSplineChart, SolidGaugeChart, WordCloudChart } from "./Components/Charts/index";
+import { PieChart, ColumnChart, LineChart, SplineChart, BarChart, AreaChart, AreaSplineChart, SolidGaugeChart, WordCloudChart } from "./Components/Charts";
 import { sentiments, channels, config } from "./Components/Charts/defaultValue";
 
 /* Library Themes, Extend modules for highcharts */
@@ -138,16 +138,16 @@ App.defaultProps = {
         enabled: true
       },
       data: [{
-        name: sentiments.positive.value,
-        color: sentiments.positive.color,
+        name: sentiments[1].value,
+        color: sentiments[1].color,
         y: 18
       }, {
-        name: sentiments.negative.value,
-        color: sentiments.negative.color,
+        name: sentiments[2].value,
+        color: sentiments[2].color,
         y: 54
       }, {
-        name: sentiments.neutral.value,
-        color: sentiments.neutral.color,
+        name: sentiments[3].value,
+        color: sentiments[3].color,
         y: 40
       }]
     }]
@@ -164,16 +164,16 @@ App.defaultProps = {
         enabled: true
       },
       data: [{
-        name: sentiments.positive.value,
-        color: sentiments.positive.color,
+        name: sentiments[1].value,
+        color: sentiments[1].color,
         y: 18
       }, {
-        name: sentiments.negative.value,
-        color: sentiments.negative.color,
+        name: sentiments[2].value,
+        color: sentiments[2].color,
         y: 54
       }, {
-        name: sentiments.neutral.value,
-        color: sentiments.neutral.color,
+        name: sentiments[3].value,
+        color: sentiments[3].color,
         y: 40
       }]
     }]
@@ -282,16 +282,16 @@ App.defaultProps = {
       stackLabels: 'buzzes'
     },
     series: [{
-        name: sentiments.positive.value,
-        color: sentiments.positive.color,
+        name: sentiments[1].value,
+        color: sentiments[1].color,
         data: [5000, 300, 4000, 700, 20, 200, 2000, 300, 200, 100]
     }, {
-        name: sentiments.negative.value,
-        color: sentiments.negative.color,
+        name: sentiments[2].value,
+        color: sentiments[2].color,
         data: [200, 2000, 300, 200, 100, 5000, 300, 4000, 700, 20]
     }, {
-        name: sentiments.neutral.value,
-        color: sentiments.neutral.color,
+        name: sentiments[3].value,
+        color: sentiments[3].color,
         data: [300, 4000, 4000, 200, 500, 5000, 300, 4000, 700, 20]
     }]
   },
@@ -332,16 +332,16 @@ App.defaultProps = {
       stackLabels: 'buzzes'
     },
     series: [{
-        name: sentiments.positive.value,
-        color: sentiments.positive.color,
+        name: sentiments[1].value,
+        color: sentiments[1].color,
         data: [5000, 300, 4000, 700, 20, 200, 2000, 300, 200, 100]
     }, {
-        name: sentiments.negative.value,
-        color: sentiments.negative.color,
+        name: sentiments[2].value,
+        color: sentiments[2].color,
         data: [200, 2000, 300, 200, 100, 5000, 300, 4000, 700, 20]
     }, {
-        name: sentiments.neutral.value,
-        color: sentiments.neutral.color,
+        name: sentiments[3].value,
+        color: sentiments[3].color,
         data: [300, 4000, 4000, 200, 500, 5000, 300, 4000, 700, 20]
     }]
   },
@@ -368,8 +368,8 @@ App.defaultProps = {
       allowDecimals: false
     },
     series: [{
-        name: sentiments.negative.value,
-        color: sentiments.negative.color,
+        name: sentiments[2].value,
+        color: sentiments[2].color,
         data: [41,23,40,31,82,72,26,116,48,45,25,45,85,81,181,43,75,74,118,81,50,36,60,44,61,58,33,40,32,201]
     }]
   },
@@ -453,13 +453,13 @@ App.defaultProps = {
       allowDecimals: false
     },
     series: [{
-        name: sentiments.positive.value,
-        color: sentiments.positive.color,
+        name: sentiments[1].value,
+        color: sentiments[1].color,
         data: [22,23,40]
     },
     {
-        name: sentiments.negative.value,
-        color: sentiments.negative.color,
+        name: sentiments[2].value,
+        color: sentiments[2].color,
         data: [41,22,19]
     }]
   },
@@ -551,19 +551,19 @@ App.defaultProps = {
         dataLabels: {
           enabled: false
         },
-        name: sentiments.negative.value,
-        color: sentiments.negative.color,
+        name: sentiments[2].value,
+        color: sentiments[2].color,
         data: [41,23,40,31,82,72,26,116,48,45,25,45,85,81,181,43,75,74,118,81]
     },{
-        name: sentiments.positive.value,
-        color: sentiments.positive.color,
+        name: sentiments[1].value,
+        color: sentiments[1].color,
         data: [82,110,37,233,335,145,337,135,61,181,204,315,240,143,280,176,391,203,100,176]
     },{
         dataLabels: {
           enabled: false
         },
-        name: sentiments.neutral.value,
-        color: sentiments.neutral.color,
+        name: sentiments[3].value,
+        color: sentiments[3].color,
         data: [390,233,322,17,167,342,205,234,212,382,321,252,71,26,380,328,318,351,302,261]
     }]
   },
@@ -631,19 +631,19 @@ App.defaultProps = {
         dataLabels: {
           enabled: false
         },
-        name: sentiments.negative.value,
-        color: sentiments.negative.color,
+        name: sentiments[2].value,
+        color: sentiments[2].color,
         data: [41,23,40,31,82,72,26,116,48,45,25,45,85,81,181,43,75,74,118,81]
     },{
-        name: sentiments.positive.value,
-        color: sentiments.positive.color,
+        name: sentiments[1].value,
+        color: sentiments[1].color,
         data: [82,110,37,233,335,145,337,135,61,181,204,315,240,143,280,176,391,203,100,176]
     },{
         dataLabels: {
           enabled: false
         },
-        name: sentiments.neutral.value,
-        color: sentiments.neutral.color,
+        name: sentiments[3].value,
+        color: sentiments[3].color,
         data: [390,233,322,17,167,342,205,234,212,382,321,252,71,26,380,328,318,351,302,261]
     }]
   },
@@ -671,16 +671,16 @@ App.defaultProps = {
       allowDecimals: false
     },
     series: [{
-        name: sentiments.negative.value,
-        color: sentiments.negative.color,
+        name: sentiments[2].value,
+        color: sentiments[2].color,
         data: [41,23,40,31,82,72,26,116,48,45,25,45,85,81,181,43,75,74,118,81]
     },{
-        name: sentiments.positive.value,
-        color: sentiments.positive.color,
+        name: sentiments[1].value,
+        color: sentiments[1].color,
         data: [82,110,37,233,335,145,337,135,61,181,204,315,240,143,280,176,391,203,100,176]
     },{
-        name: sentiments.neutral.value,
-        color: sentiments.neutral.color,
+        name: sentiments[3].value,
+        color: sentiments[3].color,
         data: [390,233,322,17,167,342,205,234,212,382,321,252,71,26,380,328,318,351,302,261]
     }]
   },
@@ -745,16 +745,16 @@ App.defaultProps = {
       stackLabels: 'buzzes'
     },
     series: [{
-        name: sentiments.positive.value,
-        color: sentiments.positive.color,
+        name: sentiments[1].value,
+        color: sentiments[1].color,
         data: [5000, 300, 4000, 700, 20, 200, 2000, 300, 200, 100]
     }, {
-        name: sentiments.negative.value,
-        color: sentiments.negative.color,
+        name: sentiments[2].value,
+        color: sentiments[2].color,
         data: [200, 2000, 300, 200, 100, 5000, 300, 4000, 700, 20]
     }, {
-        name: sentiments.neutral.value,
-        color: sentiments.neutral.color,
+        name: sentiments[3].value,
+        color: sentiments[3].color,
         data: [300, 4000, 4000, 200, 500, 5000, 300, 4000, 700, 20]
     }]
   },

@@ -1,6 +1,6 @@
 import React, {	Component } from 'react';
 import ChartBasic from './ChartBasic';
-import { SolidGaugeChartOption } from './defaultChartValue';
+import { SolidGaugeChartOption } from '../defaultChartValue';
 import Highcharts from 'highcharts/highstock';
 import SolidGauge from 'highcharts/modules/solid-gauge';
 import HighchartsMore from 'highcharts/highcharts-more';
@@ -12,7 +12,7 @@ HighchartsMore(Highcharts);
 export default class SolidGaugeChart extends Component {
 	render() {
 		const {
-			config, //default value of chart
+			config = {}, //default value of chart
 			themes = null, //object themes chart
 			modules = [], //array objects modules extend for chart
 			title = null,

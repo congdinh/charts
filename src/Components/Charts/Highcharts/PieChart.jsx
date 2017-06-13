@@ -1,6 +1,6 @@
 import React, {	Component } from 'react';
 import ChartBasic from './ChartBasic';
-import { PieChartOption } from './defaultChartValue';
+import { PieChartOption } from '../defaultChartValue';
 
 /**
  * Component Pie Charts
@@ -8,7 +8,7 @@ import { PieChartOption } from './defaultChartValue';
 export default class PieChart extends Component {
 	render() {
 		const {
-			config, //default value of chart
+			config = {}, //default value of chart
 			themes = null, //object themes chart
 			modules = [], //array objects modules extend for chart
 			title = null, //string

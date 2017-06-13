@@ -1,12 +1,12 @@
 import React, {	Component } from 'react';
 import ChartBasic from './ChartBasic';
-import { AreaChartOption } from './defaultChartValue';
+import { SplineChartOption } from '../defaultChartValue';
 import { indexOf } from 'underscore';
 
 /**
- * Component Area Charts
+ * Component Spline Charts
  **/
-export default class AreaChart extends Component {
+export default class SplineChart extends Component {
 
 	_setDataLabel(value, color) {
 		let datalable = {
@@ -45,12 +45,11 @@ export default class AreaChart extends Component {
 
 	render() {
 		const {
-			config, //default value of chart
+			config = {}, //default value of chart
 			themes = null, //object themes chart
 			modules = [], //array objects modules extend for chart
 			title = null,
 			subtitle = null,
-			categories = [],
 			events = {},
 			labelName = '',
 			dataLabels = true,
@@ -63,14 +62,14 @@ export default class AreaChart extends Component {
 			yAxis = {},
 			series = [],
 			type = null,
-			container = "area-chart",
+			container = "spline-chart",
 		} = this.props;
 		if(minMaxDataLabels && Object.keys(series).length > 0) {
 			series.forEach((item, key) => {
 				series[key].data = this._minMaxDataLabel(item.data, item.color);
 			});
 		}
-		const options = AreaChartOption(config, title, subtitle, categories, events, labelName, dataLabels, marker, tooltip, legend, stacking, xAxis, yAxis, series);
+		const options = SplineChartOption(config, title, subtitle, events, labelName, dataLabels, marker, tooltip, legend, stacking, xAxis, yAxis, series);
 
 		return React.createElement(ChartBasic, {container:container, type:type, options:options, modules: modules, themes: themes});	
 	}

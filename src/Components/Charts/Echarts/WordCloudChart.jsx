@@ -1,6 +1,6 @@
 import React, {	Component } from 'react';
 import ChartEcharts from './ChartEcharts';
-import { WordCloudChartOption } from './defaultChartValue';
+import { WordCloudChartOption } from '../defaultChartValue';
 
 /**
  * Component WordCloud Charts
@@ -40,7 +40,7 @@ export default class WordCloudChart extends Component {
 
 	render() {
 		const {
-			config,
+			config = {},
       themes = null,
 			title = {},
 			tooltip = {},

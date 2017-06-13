@@ -1,6 +1,6 @@
 import React, {	Component } from 'react';
 import ChartBasic from './ChartBasic';
-import { AreaSplineChartOption } from './defaultChartValue';
+import { AreaSplineChartOption } from '../defaultChartValue';
 import { indexOf } from 'underscore';
 
 /**
@@ -45,12 +45,11 @@ export default class AreaSplineChart extends Component {
 
 	render() {
 		const {
-			config, //default value of chart
+			config = {}, //default value of chart
 			themes = null, //object themes chart
 			modules = [], //array objects modules extend for chart
 			title = null,
 			subtitle = null,
-			categories = [],
 			events = {},
 			labelName = '',
 			dataLabels = true,
@@ -70,7 +69,7 @@ export default class AreaSplineChart extends Component {
 				series[key].data = this._minMaxDataLabel(item.data, item.color);
 			});
 		}
-		const options = AreaSplineChartOption(config, title, subtitle, categories, events, labelName, dataLabels, marker, tooltip, legend, stacking, xAxis, yAxis, series);
+		const options = AreaSplineChartOption(config, title, subtitle, events, labelName, dataLabels, marker, tooltip, legend, stacking, xAxis, yAxis, series);
 
 		return React.createElement(ChartBasic, {container:container, type:type, options:options, modules: modules, themes: themes});	
 	}

@@ -1,13 +1,14 @@
 import Highcharts from 'highcharts/highstock';
 
 const PieChartOption = (config, title, subtitle, events, labelName, legend, series) => {
+  const { fontFamily, titleTextColor, titleFontSize, subtitleTextColor, subtitleFontSize  } = config;
   return {
     chart: {
       plotBackgroundColor: null,
       plotBorderWidth: 0,
       plotShadow: false,
       style: {
-        fontFamily: config ? config.fontFamily : null
+        fontFamily: fontFamily
       },
       global: {
         useUTC: false
@@ -26,10 +27,10 @@ const PieChartOption = (config, title, subtitle, events, labelName, legend, seri
       align: 'center',
       verticalAlign: 'middle',
       style: {
-        color: config ? config.titleTextColor : null,
+        color: titleTextColor,
         textDecoration: 'underline',
         fontWeight: 'bold',
-        fontSize: config ? config.titleFontSize : null
+        fontSize: titleFontSize
       },
       y: -55
     },
@@ -39,8 +40,8 @@ const PieChartOption = (config, title, subtitle, events, labelName, legend, seri
       align: 'center',
       y: 10,
       style: {
-        color: config ? config.subtitleTextColor : null,
-        fontSize: config ? config.subtitleFontSize : null,
+        color: subtitleTextColor,
+        fontSize: subtitleFontSize,
         fontWeight: 'bold'
       }
     },
@@ -75,14 +76,17 @@ const PieChartOption = (config, title, subtitle, events, labelName, legend, seri
   };
 };
 
-const ColumnChartOption = (config, title, subtitle, categories, events, labelName, dataLabels, tooltip, legend, stacking, grouping, xAxis, yAxis, series) => {
+const ColumnChartOption = (config, title, subtitle, events, labelName, dataLabels, tooltip, legend, stacking, grouping, xAxis, yAxis, series) => {
+  const { fontFamily, zoomType, lineColor, lineWidth, borderRadius, maxPointWidth } = config;
+  const { categories = [], title: xAxisTitle } = xAxis;
+  const { min = 0, type, allowDecimals = true, title : yAxisTitle } = yAxis;
   return {
     chart: {
       plotBackgroundColor: null,
       plotBorderWidth: 0,
       plotShadow: false,
       style: {
-        fontFamily: config ? config.fontFamily : null
+        fontFamily: fontFamily
       },
       global: {
         useUTC: false
@@ -91,7 +95,7 @@ const ColumnChartOption = (config, title, subtitle, categories, events, labelNam
         decimalPoint: '.',
         thousandsSep: ','
       },
-      zoomType: config ? config.zoomType : null,
+      zoomType: zoomType,
       type: 'column'
     },
     credits: {
@@ -104,18 +108,18 @@ const ColumnChartOption = (config, title, subtitle, categories, events, labelNam
       text: subtitle
     },
     xAxis: {
-      categories: xAxis.categories ? xAxis.categories : [],
-      lineColor: config ? config.lineColor : null,
-      lineWidth: config ? config.lineWidth : null,
-      title: xAxis.title ? xAxis.title : null
+      categories: categories,
+      lineColor: lineColor,
+      lineWidth: lineWidth,
+      title: xAxisTitle
     },
     yAxis: {
-      min: yAxis.min ? yAxis.min : 0,
-      title: yAxis.title ? yAxis.title : null,
-      lineColor: config ? config.lineColor : null,
-      lineWidth: config ? config.lineWidth : null,
-      type: yAxis.type ? yAxis.type : null,
-      allowDecimals: yAxis.allowDecimals ? yAxis.allowDecimals : true,
+      min: min,
+      title: yAxisTitle,
+      lineColor: lineColor,
+      lineWidth: lineWidth,
+      type: type,
+      allowDecimals: allowDecimals,
       stackLabels: {
         enabled: yAxis.stackLabels ? true : false,
         style: {
@@ -137,8 +141,8 @@ const ColumnChartOption = (config, title, subtitle, categories, events, labelNam
       column: {
         stacking: stacking,
         grouping: grouping, //group column
-        borderRadius: config ? config.borderRadius : null,
-        maxPointWidth: config ? config.maxPointWidth : null,
+        borderRadius: borderRadius,
+        maxPointWidth: maxPointWidth,
         cursor: 'pointer',
         dataLabels: {
           enabled: dataLabels,
@@ -160,14 +164,18 @@ const ColumnChartOption = (config, title, subtitle, categories, events, labelNam
   };
 };
 
-const LineChartOption = (config, title, subtitle, categories, events, labelName, dataLabels, marker, tooltip, legend, stacking, xAxis, yAxis, series) => {
+const LineChartOption = (config, title, subtitle, events, labelName, dataLabels, marker, tooltip, legend, stacking, xAxis, yAxis, series) => {
+  const { fontFamily, zoomType, lineColor, lineWidth } = config;
+  const { categories = [], title: xAxisTitle } = xAxis;
+  const { min = 0, allowDecimals = true, title : yAxisTitle } = yAxis;
+  const { fillColor: fillColorMarker, lineWidth: lineWidthMarker, lineColor: lineColorMarker } = marker;
   return {
     chart: {
       plotBackgroundColor: null,
       plotBorderWidth: 0,
       plotShadow: false,
       style: {
-        fontFamily: config ? config.fontFamily : null
+        fontFamily: fontFamily
       },
       global: {
         useUTC: false
@@ -176,7 +184,7 @@ const LineChartOption = (config, title, subtitle, categories, events, labelName,
         decimalPoint: '.',
         thousandsSep: ','
       },
-      zoomType: config ? config.zoomType : null,
+      zoomType: zoomType,
       type: 'line'
     },
     credits: {
@@ -189,19 +197,19 @@ const LineChartOption = (config, title, subtitle, categories, events, labelName,
       text: subtitle
     },
     xAxis: {
-      categories: xAxis.categories ? xAxis.categories : [],
-      lineColor: config ? config.lineColor : null,
-      lineWidth: config ? config.lineWidth : null,
-      title: xAxis.title ? xAxis.title : null,
+      categories: categories,
+      lineColor: lineColor,
+      lineWidth: lineWidth,
+      title: xAxisTitle,
       maxPadding: 0.05,
       showLastLabel: true
     },
     yAxis: {
-      min: yAxis.min ? yAxis.min : 0,
-      title: yAxis.title ? yAxis.title : null,
-      lineColor: config ? config.lineColor : null,
-      lineWidth: config ? config.lineWidth : null,
-      allowDecimals: yAxis.allowDecimals ? yAxis.allowDecimals : true
+      min: min,
+      title: yAxisTitle,
+      lineColor: lineColor,
+      lineWidth: lineWidth,
+      allowDecimals: allowDecimals
     },
     tooltip: tooltip,
     legend: legend,
@@ -210,9 +218,9 @@ const LineChartOption = (config, title, subtitle, categories, events, labelName,
         marker: {
           enabled: true,
           symbol: 'circle',
-          fillColor: marker.fillColor ? marker.fillColor : null,
-          lineWidth: marker.lineWidth ? marker.lineWidth : null,
-          lineColor: marker.lineColor ? marker.lineColor : null,
+          fillColor: fillColorMarker,
+          lineWidth: lineWidthMarker,
+          lineColor: lineColorMarker
         },
         cursor: 'pointer',
         dataLabels: {
@@ -231,14 +239,18 @@ const LineChartOption = (config, title, subtitle, categories, events, labelName,
   };
 };
 
-const SplineChartOption = (config, title, subtitle, categories, events, labelName, dataLabels, marker, tooltip, legend, stacking, xAxis, yAxis, series) => {
+const SplineChartOption = (config, title, subtitle, events, labelName, dataLabels, marker, tooltip, legend, stacking, xAxis, yAxis, series) => {
+  const { fontFamily, zoomType, lineColor, lineWidth } = config;
+  const { categories = [], title: xAxisTitle } = xAxis;
+  const { min = 0, allowDecimals = true, title : yAxisTitle } = yAxis;
+  const { fillColor: fillColorMarker, lineWidth: lineWidthMarker, lineColor: lineColorMarker } = marker;
   return {
     chart: {
       plotBackgroundColor: null,
       plotBorderWidth: 0,
       plotShadow: false,
       style: {
-        fontFamily: config ? config.fontFamily : null
+        fontFamily: fontFamily
       },
       global: {
         useUTC: false
@@ -247,7 +259,7 @@ const SplineChartOption = (config, title, subtitle, categories, events, labelNam
         decimalPoint: '.',
         thousandsSep: ','
       },
-      zoomType: config ? config.zoomType : null,
+      zoomType: zoomType,
       type: 'spline'
     },
     credits: {
@@ -260,19 +272,19 @@ const SplineChartOption = (config, title, subtitle, categories, events, labelNam
       text: subtitle
     },
     xAxis: {
-      categories: xAxis.categories ? xAxis.categories : [],
-      lineColor: config ? config.lineColor : null,
-      lineWidth: config ? config.lineWidth : null,
-      title: xAxis.title ? xAxis.title : null,
+      categories: categories,
+      lineColor: lineColor,
+      lineWidth: lineWidth,
+      title: xAxisTitle,
       maxPadding: 0.05,
       showLastLabel: true
     },
     yAxis: {
-      min: yAxis.min ? yAxis.min : 0,
-      title: yAxis.title ? yAxis.title : null,
-      lineColor: config ? config.lineColor : null,
-      lineWidth: config ? config.lineWidth : null,
-      allowDecimals: yAxis.allowDecimals ? yAxis.allowDecimals : true
+      min: min,
+      title: yAxisTitle,
+      lineColor: lineColor,
+      lineWidth: lineWidth,
+      allowDecimals: allowDecimals
     },
     tooltip: tooltip,
     legend: legend,
@@ -281,9 +293,9 @@ const SplineChartOption = (config, title, subtitle, categories, events, labelNam
         marker: {
           enabled: true,
           symbol: 'circle',
-          fillColor: marker.fillColor ? marker.fillColor : null,
-          lineWidth: marker.lineWidth ? marker.lineWidth : null,
-          lineColor: marker.lineColor ? marker.lineColor : null,
+          fillColor: fillColorMarker,
+          lineWidth: lineWidthMarker,
+          lineColor: lineColorMarker
         },
         cursor: 'pointer',
         dataLabels: {
@@ -302,14 +314,17 @@ const SplineChartOption = (config, title, subtitle, categories, events, labelNam
   };
 };
 
-const BarChartOption = (config, title, subtitle, categories, events, labelName, dataLabels, tooltip, legend, stacking, xAxis, yAxis, series) => {
+const BarChartOption = (config, title, subtitle, events, labelName, dataLabels, tooltip, legend, stacking, xAxis, yAxis, series) => {
+  const { fontFamily, zoomType, lineColor, lineWidth, borderRadius, maxPointWidth } = config;
+  const { categories = [], title: xAxisTitle, labels = {}, max, scrollbar } = xAxis;
+  const { min = 0, type, allowDecimals = true, title : yAxisTitle } = yAxis;
   return {
     chart: {
       plotBackgroundColor: null,
       plotBorderWidth: 0,
       plotShadow: false,
       style: {
-        fontFamily: config ? config.fontFamily : null
+        fontFamily: fontFamily
       },
       global: {
         useUTC: false
@@ -318,7 +333,7 @@ const BarChartOption = (config, title, subtitle, categories, events, labelName, 
         decimalPoint: '.',
         thousandsSep: ','
       },
-      zoomType: config ? config.zoomType : null,
+      zoomType: zoomType,
       type: 'bar'
     },
     credits: {
@@ -331,21 +346,21 @@ const BarChartOption = (config, title, subtitle, categories, events, labelName, 
       text: subtitle
     },
     xAxis: {
-      categories: xAxis.categories ? xAxis.categories : [],
-      lineColor: config ? config.lineColor : null,
-      lineWidth: config ? config.lineWidth : null,
-      title: xAxis.title ? xAxis.title : null,
-      labels: xAxis.labels ? xAxis.labels : {},
-      max: xAxis.max ? xAxis.max : null,
-      scrollbar: xAxis.scrollbar ? xAxis.scrollbar : null
+      categories: categories,
+      lineColor: lineColor,
+      lineWidth: lineWidth,
+      title: xAxisTitle,
+      labels: labels,
+      max: max,
+      scrollbar: scrollbar
     },
     yAxis: {
-      min: yAxis.min ? yAxis.min : 0,
-      title: yAxis.title ? yAxis.title : null,
-      lineColor: config ? config.lineColor : null,
-      lineWidth: config ? config.lineWidth : null,
-      type: yAxis.type ? yAxis.type : null,
-      allowDecimals: yAxis.allowDecimals ? yAxis.allowDecimals : true,
+      min: min,
+      title: yAxisTitle,
+      lineColor: lineColor,
+      lineWidth: lineWidth,
+      type: type,
+      allowDecimals: allowDecimals,
       stackLabels: {
         enabled: yAxis.stackLabels ? true : false,
         style: {
@@ -366,8 +381,8 @@ const BarChartOption = (config, title, subtitle, categories, events, labelName, 
     plotOptions: {
       bar: {
         stacking: stacking,
-        borderRadius: config ? config.borderRadius : null,
-        maxPointWidth: config ? config.maxPointWidth : null,
+        borderRadius: borderRadius,
+        maxPointWidth: maxPointWidth,
         cursor: 'pointer',
         dataLabels: {
           enabled: dataLabels,
@@ -389,14 +404,18 @@ const BarChartOption = (config, title, subtitle, categories, events, labelName, 
   };
 };
 
-const AreaChartOption = (config, title, subtitle, categories, events, labelName, dataLabels, marker, tooltip, legend, stacking, xAxis, yAxis, series) => {
+const AreaChartOption = (config, title, subtitle, events, labelName, dataLabels, marker, tooltip, legend, stacking, xAxis, yAxis, series) => {
+  const { fontFamily, zoomType, lineColor, lineWidth, borderRadius, maxPointWidth } = config;
+  const { categories = [], title: xAxisTitle, labels = {} } = xAxis;
+  const { min = 0, type, allowDecimals = true, title : yAxisTitle } = yAxis;
+  const { fillColor: fillColorMarker, lineWidth: lineWidthMarker, lineColor: lineColorMarker } = marker;
   return {
     chart: {
       plotBackgroundColor: null,
       plotBorderWidth: 0,
       plotShadow: false,
       style: {
-        fontFamily: config ? config.fontFamily : null
+        fontFamily: fontFamily
       },
       global: {
         useUTC: false
@@ -405,7 +424,7 @@ const AreaChartOption = (config, title, subtitle, categories, events, labelName,
         decimalPoint: '.',
         thousandsSep: ','
       },
-      zoomType: config ? config.zoomType : null,
+      zoomType: zoomType,
       type: 'area'
     },
     credits: {
@@ -418,19 +437,19 @@ const AreaChartOption = (config, title, subtitle, categories, events, labelName,
       text: subtitle
     },
     xAxis: {
-      categories: xAxis.categories ? xAxis.categories : [],
-      lineColor: config ? config.lineColor : null,
-      lineWidth: config ? config.lineWidth : null,
-      title: xAxis.title ? xAxis.title : null,
-      labels: xAxis.labels ? xAxis.labels : {},
+      categories: categories,
+      lineColor: lineColor,
+      lineWidth: lineWidth,
+      title: xAxisTitle,
+      labels: labels
     },
     yAxis: {
-      min: yAxis.min ? yAxis.min : 0,
-      title: yAxis.title ? yAxis.title : null,
-      lineColor: config ? config.lineColor : null,
-      lineWidth: config ? config.lineWidth : null,
-      type: yAxis.type ? yAxis.type : null,
-      allowDecimals: yAxis.allowDecimals ? yAxis.allowDecimals : true,
+      min: min,
+      title: yAxisTitle,
+      lineColor: lineColor,
+      lineWidth: lineWidth,
+      type: type,
+      allowDecimals: allowDecimals,
       stackLabels: {
         enabled: yAxis.stackLabels ? true : false,
         style: {
@@ -451,16 +470,16 @@ const AreaChartOption = (config, title, subtitle, categories, events, labelName,
     plotOptions: {
       area: {
         stacking: stacking,
-        borderRadius: config ? config.borderRadius : null,
-        maxPointWidth: config ? config.maxPointWidth : null,
+        borderRadius: borderRadius,
+        maxPointWidth: maxPointWidth,
         fillOpacity: 0.5,
         cursor: 'pointer',
         marker: {
           enabled: true,
           symbol: 'circle',
-          fillColor: marker.fillColor ? marker.fillColor : null,
-          lineWidth: marker.lineWidth ? marker.lineWidth : null,
-          lineColor: marker.lineColor ? marker.lineColor : null,
+          fillColor: fillColorMarker,
+          lineWidth: lineWidthMarker,
+          lineColor: lineColorMarker
         },
         dataLabels: {
           enabled: dataLabels,
@@ -482,14 +501,18 @@ const AreaChartOption = (config, title, subtitle, categories, events, labelName,
   };
 };
 
-const AreaSplineChartOption = (config, title, subtitle, categories, events, labelName, dataLabels, marker, tooltip, legend, stacking, xAxis, yAxis, series) => {
+const AreaSplineChartOption = (config, title, subtitle, events, labelName, dataLabels, marker, tooltip, legend, stacking, xAxis, yAxis, series) => {
+  const { fontFamily, zoomType, lineColor, lineWidth, borderRadius, maxPointWidth } = config;
+  const { categories = [], title: xAxisTitle, labels = {} } = xAxis;
+  const { min = 0, type, allowDecimals = true, title : yAxisTitle } = yAxis;
+  const { fillColor: fillColorMarker, lineWidth: lineWidthMarker, lineColor: lineColorMarker } = marker;
   return {
     chart: {
       plotBackgroundColor: null,
       plotBorderWidth: 0,
       plotShadow: false,
       style: {
-        fontFamily: config ? config.fontFamily : null
+        fontFamily: fontFamily
       },
       global: {
         useUTC: false
@@ -498,7 +521,7 @@ const AreaSplineChartOption = (config, title, subtitle, categories, events, labe
         decimalPoint: '.',
         thousandsSep: ','
       },
-      zoomType: config ? config.zoomType : null,
+      zoomType: zoomType,
       type: 'areaspline'
     },
     credits: {
@@ -511,19 +534,19 @@ const AreaSplineChartOption = (config, title, subtitle, categories, events, labe
       text: subtitle
     },
     xAxis: {
-      categories: xAxis.categories ? xAxis.categories : [],
-      lineColor: config ? config.lineColor : null,
-      lineWidth: config ? config.lineWidth : null,
-      title: xAxis.title ? xAxis.title : null,
-      labels: xAxis.labels ? xAxis.labels : {},
+      categories: categories,
+      lineColor: lineColor,
+      lineWidth: lineWidth,
+      title: xAxisTitle,
+      labels: labels,
     },
     yAxis: {
-      min: yAxis.min ? yAxis.min : 0,
-      title: yAxis.title ? yAxis.title : null,
-      lineColor: config ? config.lineColor : null,
-      lineWidth: config ? config.lineWidth : null,
-      type: yAxis.type ? yAxis.type : null,
-      allowDecimals: yAxis.allowDecimals ? yAxis.allowDecimals : true,
+      min: min,
+      title: yAxisTitle,
+      lineColor: lineColor,
+      lineWidth: lineWidth,
+      type: type,
+      allowDecimals: allowDecimals,
       stackLabels: {
         enabled: yAxis.stackLabels ? true : false,
         style: {
@@ -544,16 +567,16 @@ const AreaSplineChartOption = (config, title, subtitle, categories, events, labe
     plotOptions: {
       areaspline: {
         stacking: stacking,
-        borderRadius: config ? config.borderRadius : null,
-        maxPointWidth: config ? config.maxPointWidth : null,
+        borderRadius: borderRadius,
+        maxPointWidth: maxPointWidth,
         fillOpacity: 0.5,
         cursor: 'pointer',
         marker: {
           enabled: true,
           symbol: 'circle',
-          fillColor: marker.fillColor ? marker.fillColor : null,
-          lineWidth: marker.lineWidth ? marker.lineWidth : null,
-          lineColor: marker.lineColor ? marker.lineColor : null,
+          fillColor: fillColorMarker,
+          lineWidth: lineWidthMarker,
+          lineColor: lineColorMarker
         },
         dataLabels: {
           enabled: dataLabels,
@@ -576,13 +599,14 @@ const AreaSplineChartOption = (config, title, subtitle, categories, events, labe
 };
 
 const SolidGaugeChartOption = (config, title, subtitle, total, events, labelName, legend) => {
+  const { fontFamily } = config;
   return {
     chart: {
       plotBackgroundColor: null,
       plotBorderWidth: 0,
       plotShadow: false,
       style: {
-        fontFamily: config ? config.fontFamily : null
+        fontFamily: fontFamily
       },
       global: {
         useUTC: false
@@ -646,6 +670,7 @@ const SolidGaugeChartOption = (config, title, subtitle, total, events, labelName
 };
 
 const WordCloudChartOption = (config, title, tooltip, toolbox, series) => {
+  const { fontFamily = 'sans-serif', fontWeight = 'normal' } = config;
   return {
     title: title,
     tooltip: tooltip,
@@ -691,8 +716,8 @@ const WordCloudChartOption = (config, title, tooltip, toolbox, series) => {
         // Global text style
         textStyle: {
             normal: {
-                fontFamily: config ? config.fontFamily : 'sans-serif',
-                fontWeight: config ? config.fontWeight : 'normal',
+                fontFamily: fontFamily,
+                fontWeight: fontWeight,
                 // Color can be a callback function or a color string
                 color: function () {
                     // Random color
